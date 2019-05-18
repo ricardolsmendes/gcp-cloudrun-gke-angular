@@ -7,6 +7,8 @@ RUN npm install && \
 FROM nginx:alpine
 ## Copy a new configuration file setting logs base dir to /var/logs/nginx
 COPY ./docker/nginx-alpine-custom/nginx.conf /etc/nginx/
+RUN mkdir /var/logs
+RUN mkdir /var/logs/nginx
 ## Copy a new configuration file setting listen port to 8080
 COPY ./docker/nginx-alpine-custom/default.conf /etc/nginx/conf.d/
 EXPOSE 8080
