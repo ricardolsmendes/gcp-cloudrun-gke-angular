@@ -5,8 +5,10 @@ RUN npm install && \
     npm run build --prod
 
 FROM nginx:alpine
+## Copy a new configuration file setting logs base dir to /var/logs/nginx
+COPY ./docker/nginx-alpine-custom/nginx.conf /etc/nginx/
 ## Copy a new configuration file setting listen port to 8080
-COPY ./docker/nginx-alpine-port-8080/default.conf /etc/nginx/conf.d/
+COPY ./docker/nginx-alpine-custom/default.conf /etc/nginx/conf.d/
 EXPOSE 8080
 ## Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
