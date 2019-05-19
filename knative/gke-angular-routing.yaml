@@ -6,7 +6,6 @@ spec:
   # This is the gateway shared in knative service mesh.
   gateways:
   - knative-ingress-gateway.knative-serving.svc.cluster.local
-  # Set host to the domain name that you own.
   hosts:
   - '*'
   http:
