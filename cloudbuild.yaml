@@ -1,16 +1,16 @@
 steps:
 
   # build the container image
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcp-cloudrun-gke-angular', '.']
+  - name: gcr.io/cloud-builders/docker
+    args: [ build, -t, gcr.io/$PROJECT_ID/gcp-cloudrun-gke-angular, . ]
 
   # push the container image to Container Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/gcp-cloudrun-gke-angular']
+  - name: gcr.io/cloud-builders/docker
+    args: [ push, gcr.io/$PROJECT_ID/gcp-cloudrun-gke-angular ]
 
   # Deploy container image to Cloud Run
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['beta', 'run', 'deploy', 'gke-angular', '--image', 'gcr.io/$PROJECT_ID/gcp-cloudrun-gke-angular', '--cluster', 'cloudrun-angular-cluster', '--cluster-location', 'us-central1-a']
+  - name: gcr.io/cloud-builders/gcloud
+    args: [ beta, run, deploy, gke-angular, --image, gcr.io/$PROJECT_ID/gcp-cloudrun-gke-angular, --platform, gke, --cluster, cloudrun-angular-cluster, --cluster-location, us-central1-a ]
 
 
 images:
